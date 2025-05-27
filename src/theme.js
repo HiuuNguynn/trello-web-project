@@ -19,6 +19,7 @@ const theme = extendTheme({
       },
     },
   },
+
   components: {
     MuiCssBaseline: {
       styleOverrides:{
@@ -37,6 +38,7 @@ const theme = extendTheme({
         }
       },
     },
+
     MuiButton: {
       styleOverrides: {
         root: {
@@ -71,7 +73,6 @@ const theme = extendTheme({
         })
       },
     }
-
   },
 });
 

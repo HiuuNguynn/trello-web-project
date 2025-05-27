@@ -9,16 +9,18 @@ import Workspace from '~/components/AppBar/Menu/Workspace';
 import Recent from '~/components/AppBar/Menu/Recent';
 import Starred from '~/components/AppBar/Menu/Starred';
 import Templates from '~/components/AppBar/Menu/Templates';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Profile from './Menu/Profiles';
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 function index() {
   return (
-    <Box px={2} sx={{
+    <Box sx={{
+      px:2,
       display: 'flex',
       alignItems: 'center',
       height: (theme) => theme.trello.appBarHeight,
@@ -40,7 +42,12 @@ function index() {
           <Recent />
           <Starred />
           <Templates />
-          <Button variant="outlined">Create</Button>
+          <Button
+           variant="outlined"
+           startIcon={<LibraryAddIcon />}
+           >
+            Create
+            </Button>
         </Box>
 
       </Box>

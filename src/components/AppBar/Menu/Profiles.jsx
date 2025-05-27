@@ -35,7 +35,7 @@ function Profile() {
                     aria-expanded={open ? 'true' : undefined}
                 >
                     <Avatar
-                        sx={{ width: 30, height: 30 }}
+                        sx={{ width: 34, height: 34 }}
                         alt='TrungHieuDev'
                         src='https://yt3.ggpht.com/yti/ANjgQV-ikYwiwEratvxjBszrgTG4vQ2GekPgPtydrQgAdI_JVkA=s88-c-k-c0x00ffffff-no-rj' />
                 </IconButton>
