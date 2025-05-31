@@ -12,41 +12,43 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Cloud from '@mui/icons-material/Cloud';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 function Workspace() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    return (
-        <Box>
-            <Button
-                id="basic-button-workspace"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                endIcon={<ExpandMoreIcon />}
-            >
-                Workspaces
-            </Button>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button-workspace"',
-                }}
-            >
-                 <MenuItem>
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <Box>
+      <Button
+        id="basic-button-workspace"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        endIcon={<ExpandMoreIcon />}
+        sx={{color: 'white'}}
+      >
+        Workspaces
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button-workspace"',
+        }}
+      >
+        <MenuItem>
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Cut</ListItemText>
+          <ListItemText >Cut</ListItemText>
           <Typography variant="body2" color="text.secondary">
             ⌘X
           </Typography>
@@ -76,9 +78,9 @@ function Workspace() {
           </ListItemIcon>
           <ListItemText>Web Clipboard</ListItemText>
         </MenuItem>
-            </Menu>
-        </Box>
-    )
+      </Menu>
+    </Box>
+  )
 }
 
 export default Workspace

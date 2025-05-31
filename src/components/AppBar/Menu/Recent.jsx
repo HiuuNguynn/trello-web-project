@@ -26,6 +26,8 @@ function Recent() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         endIcon={<ExpandMoreIcon />}
+        sx={{color: 'white'}}
+
       >
         Recent
       </Button>
@@ -36,6 +38,7 @@ function Recent() {
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button-recent"',
+
         }}
       >
         <MenuItem>

@@ -16,15 +16,15 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const MENU_STYLE = {
   borderRadius: '4px',
-  bgcolor: "white",
-  color: "primary.main",
+  bgcolor: "transparent",
+  color: "white",
   border: 'none',
   paddingX: '5px',
   '&:hover': {
     bgcolor: "primary.50"
   },
   '& .MuiSvgIcon-root': {
-    color: 'primary.main'
+    color: 'white'
   }
 }
 function BoardBar() {
@@ -38,7 +38,9 @@ function BoardBar() {
       justifyContent: 'space-between',
       gap: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #00b894',
+      bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#1976d2',
+      borderBottom: '1px solid white',
+      
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
         <Chip
@@ -81,14 +83,22 @@ function BoardBar() {
         <Button
           variant="outlined"
           startIcon = {<PersonAddIcon />}
+          sx={{
+            color:'white',
+            borderColor: 'white',
+            '&:hover': { borderColor: 'white' }
+          }}
         >
           Invite
         </Button>
 
-        <AvatarGroup max={3} sx={{
-          '& MuiAvatar-root': {
+        <AvatarGroup max={8} sx={{
+          gap: '10px',
+          '& .MuiAvatar-root': {
             width: 34,
             height: 34,
+            fontSize: '16px',
+            border: 'none'
           }
         }}>
           <Tooltip title="TrungHieuDev">
