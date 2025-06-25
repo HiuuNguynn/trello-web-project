@@ -40,7 +40,7 @@ function BoardBar() {
       overflowX: 'auto',
       bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#1976d2',
       borderBottom: '1px solid white',
-      
+      '&::-webkit-scrollbar-track': {m:2}
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
         <Chip
@@ -92,13 +92,15 @@ function BoardBar() {
           Invite
         </Button>
 
-        <AvatarGroup max={8} sx={{
+        <AvatarGroup max={3} sx={{
           gap: '10px',
           '& .MuiAvatar-root': {
             width: 34,
             height: 34,
             fontSize: '16px',
-            border: 'none'
+            border: 'none',
+            cursor: 'pointer',
+            '&:first-of-type': {bgcolor:'#a4b0be'}
           }
         }}>
           <Tooltip title="TrungHieuDev">

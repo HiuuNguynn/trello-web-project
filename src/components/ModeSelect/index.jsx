@@ -40,11 +40,11 @@ function ModeSelect() {
         onChange={handleChange}
         sx={{
           color: 'white',
-          '& .MuiSelect-icon': {color: 'white'},
-          '& .MuiOutlinedInput-notchedOutline': {borderColor: 'white'},
-          '&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white'},
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white'},
-          '&MuiSvgIcon-root': {color: 'white'},
+          '& .MuiSelect-icon': { color: 'white' },
+          '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+          '&MuiSvgIcon-root': { color: 'white' },
         }}>
         <MenuItem value="light" >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
