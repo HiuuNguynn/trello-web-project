@@ -11,9 +11,6 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-
-
-
 const MENU_STYLE = {
   borderRadius: '4px',
   bgcolor: "transparent",
@@ -39,7 +36,6 @@ function BoardBar() {
       gap: 2,
       overflowX: 'auto',
       bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#1976d2',
-      borderBottom: '1px solid white',
       '&::-webkit-scrollbar-track': {m:2}
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
