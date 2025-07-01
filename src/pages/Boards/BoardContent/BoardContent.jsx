@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ListColumns from '~/pages/Boards/BoardContent/ListColumns/ListColumns';
+<<<<<<< Updated upstream
 import { mapOrder } from '~/utils/sorts';
 import { DndContext,  useSensor, useSensors, MouseSensor, TouchSensor } from '@dnd-kit/core';
 import { useState } from 'react';
@@ -30,14 +31,16 @@ function BoardContent({board}) {
     // cái này được dùng để sắp xếp lại mảng Columns ban đầu
     const dndOrderedColumns = arrayMove(orderedColumns, oldIndex, newIndex); 
     
-    // // 2 cái console.log dữ liệu này sau dùng để gọi API
+    // 2 cái console.log dữ liệu này sau dùng để gọi API
     // const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
     // console.log('dndOrderedColumns:', dndOrderedColumns);
     // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
-    // console.log('test');
     
     // setOrderedColumns(dndOrderedColumns);
   };
+=======
+function BoardContent({board}) {
+>>>>>>> Stashed changes
   return (
     <DndContext onDragEnd={handleDragEnd} sensors = {sensors}>
     <Box
@@ -48,7 +51,11 @@ function BoardContent({board}) {
         bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#1976d2',
         padding: '10px 0',
       }}>
+<<<<<<< Updated upstream
       <ListColumns columns = {orderedColumns} />
+=======
+      <ListColumns columns = {board?.columns} />
+>>>>>>> Stashed changes
     </Box>
     </DndContext>
   )

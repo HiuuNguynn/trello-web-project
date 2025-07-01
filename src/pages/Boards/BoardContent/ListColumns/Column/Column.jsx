@@ -18,6 +18,7 @@ import DragHandleIcon from '@mui/icons-material/DragHandle';
 import ListCard from './ListCards/ListCards';
 import { mapOrder } from '~/utils/sorts';
 import Box from '@mui/material/Box';
+<<<<<<< Updated upstream
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 function Column({ column }) {
@@ -35,6 +36,9 @@ function Column({ column }) {
 
 
     const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id');
+=======
+function Column({column}) {
+>>>>>>> Stashed changes
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => { setAnchorEl(event.currentTarget) };
@@ -124,7 +128,11 @@ function Column({ column }) {
         </Box>
 
         {/* Box List Card  */}
+<<<<<<< Updated upstream
         <ListCard cards = {orderedCards}/>
+=======
+        <ListCard cards = {column?.cards}/>
+>>>>>>> Stashed changes
 
         {/* Box Column Footer */}
         <Box sx={{

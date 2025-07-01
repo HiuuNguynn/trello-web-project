@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 
+=======
+/**
+ * YouTube: TrungQuanDev - Một Lập Trình Viên
+ * Created by trungquandev.com's author on Jun 28, 2023
+ */
+>>>>>>> Stashed changes
 export const mockData = {
   board: {
     _id: 'board-id-01',
@@ -21,7 +28,11 @@ export const mockData = {
             columnId: 'column-id-01',
             title: 'Title of card 01',
             description: 'Markdown Syntax (sẽ ở khóa nâng cao nhé)',
+<<<<<<< Updated upstream
             cover: 'https://images.weserv.nl/?url=trungquandev.com/wp-content/uploads/2022/07/fair-mern-stack-advanced-banner-trungquandev.jpg',
+=======
+            cover: 'https://trungquandev.com/wp-content/uploads/2022/07/fair-mern-stack-advanced-banner-trungquandev.jpg',
+>>>>>>> Stashed changes
             memberIds: ['test-user-id-01'],
             comments: ['test comment 01', 'test comment 02'],
             attachments: ['test attachment 01', 'test attachment 02', 'test attachment 03']

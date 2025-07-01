@@ -22,6 +22,10 @@ function ListCards({cards}) {
                 '&::-webkit-scrollbar-thumb:hover': { backgroundColor: '#bfc2cf' },
             }}>
               {cards?.map(card => <Card key = {card._id} card = {card}/> )}
+<<<<<<< Updated upstream
+=======
+           
+>>>>>>> Stashed changes
     </Box>
   )
 }
