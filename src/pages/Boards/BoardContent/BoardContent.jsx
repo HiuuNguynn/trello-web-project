@@ -30,11 +30,11 @@ function BoardContent({board}) {
     // cái này được dùng để sắp xếp lại mảng Columns ban đầu
     const dndOrderedColumns = arrayMove(orderedColumns, oldIndex, newIndex); 
     
-    // 2 cái console.log dữ liệu này sau dùng để gọi API
-    const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
-    console.log('dndOrderedColumns:', dndOrderedColumns);
-    console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
-    console.log('test');
+    // // 2 cái console.log dữ liệu này sau dùng để gọi API
+    // const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
+    // console.log('dndOrderedColumns:', dndOrderedColumns);
+    // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
+    // console.log('test');
     
     setOrderedColumns(dndOrderedColumns);
   };
