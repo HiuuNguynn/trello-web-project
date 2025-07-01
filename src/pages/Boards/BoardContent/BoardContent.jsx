@@ -36,7 +36,7 @@ function BoardContent({board}) {
     // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
     // console.log('test');
     
-    setOrderedColumns(dndOrderedColumns);
+    // setOrderedColumns(dndOrderedColumns);
   };
   return (
     <DndContext onDragEnd={handleDragEnd} sensors = {sensors}>
