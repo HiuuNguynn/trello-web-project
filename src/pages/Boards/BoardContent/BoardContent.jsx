@@ -22,7 +22,7 @@ function BoardContent({board}) {
     const {active, over} = event;
 
     if(!over) return; // nếu không có over thì không làm gì cả
-    if(active.id != over.id) console.log('Drag and drop event:', event);
+    if(active.id != over.id) console.log('Drag and drop:', event);
 
     const oldIndex = orderedColumns.findIndex(c => c._id === active.id);
     const newIndex = orderedColumns.findIndex(c => c._id === over.id);
@@ -31,9 +31,9 @@ function BoardContent({board}) {
     const dndOrderedColumns = arrayMove(orderedColumns, oldIndex, newIndex); 
     
     // 2 cái console.log dữ liệu này sau dùng để gọi API
-    // const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
-    // console.log('dndOrderedColumns:', dndOrderedColumns);
-    // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
+    const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
+    console.log('dndOrderedColumns:', dndOrderedColumns);
+    console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
     
     setOrderedColumns(dndOrderedColumns);
   };
