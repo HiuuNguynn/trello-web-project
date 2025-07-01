@@ -34,6 +34,7 @@ function BoardContent({board}) {
     const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
     console.log('dndOrderedColumns:', dndOrderedColumns);
     console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
+    console.log('test');
     
     setOrderedColumns(dndOrderedColumns);
   };
