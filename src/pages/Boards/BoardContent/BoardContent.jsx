@@ -57,5 +57,6 @@ function BoardContent({board}) {
 }
 console.log("test01");
 console.log("test01");
+console.log("test02");
 
 export default BoardContent
