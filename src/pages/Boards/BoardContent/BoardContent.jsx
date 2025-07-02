@@ -56,5 +56,6 @@ function BoardContent({board}) {
     </DndContext>
   )
 }
+console.log("test01");
 
 export default BoardContent
