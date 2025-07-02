@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Column from './Column/Column'
 import Button from '@mui/material/Button';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
+<<<<<<< Updated upstream
 import { SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 function ListColumns({columns}) {
 
@@ -10,6 +11,9 @@ function ListColumns({columns}) {
    * Thằng SortableContext yêu câu items là một mảng dạng ['id-1', 'id-2', ...] chứ không phải là mảng đối tượng [{_id: 'id-1', ...}, {_id: 'id-2', ...}]
    * Nếu không đúng thì vẫn kéo thả được nhưng sẽ không có hiệu ứng kéo thả animation
    */
+=======
+function ListColumns({columns}) {
+>>>>>>> Stashed changes
   return (
     <SortableContext items = {columns?.map(c => c?._id)} strategy={horizontalListSortingStrategy}>
     <Box
@@ -24,6 +28,10 @@ function ListColumns({columns}) {
         }}>
         {/* Box column Test 01 */}
         {columns?.map(column => <Column key = {column._id} column = {column}/>)}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
          <Box sx={{
             maxWidth: '200px',
             minWidth: '200px',

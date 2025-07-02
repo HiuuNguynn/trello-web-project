@@ -9,23 +9,34 @@ import CommentIcon from '@mui/icons-material/Comment'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 function Card({ card }) {
+<<<<<<< Updated upstream
 
   const shouldShowCardAction = () => {
     return !!(card?.memberIds?.length || card?.comments?.length || card?.attachments?.length);
   }
+=======
+ 
+>>>>>>> Stashed changes
   return (
     <MuiCard
       sx={{
         cursor: 'pointer',
         boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)',
         overflow: 'unset'
+<<<<<<< Updated upstream
       }}>
       { card?.cover && <CardMedia  sx={{ height : 140 }}  image={card?.cover} /> }
+=======
+      }}
+    >
+      {card?.cover && <CardMedia sx={{ height: 140 }}image={card?.cover} /> }
+>>>>>>> Stashed changes
       <CardContent sx={{ p: 1.5, '&:last-child': { p: 1.5 } }}>
         <Typography>{card?.title}</Typography>
       </CardContent>
       {shouldShowCardAction () &&
       <CardActions sx={{ p: '0 4px 8px 4px' }}>
+<<<<<<< Updated upstream
         { !!card?.memberIds?.length  &&
           <Button size="small" startIcon={<GroupIcon />}>{card?.memberIds?.length}</Button> 
         }
@@ -35,6 +46,12 @@ function Card({ card }) {
         { !!card?.attachments?.length  &&
           <Button size="small" startIcon={<AttachmentIcon />}>{card?.attachments?.length}</Button> 
         }
+=======
+        
+        <Button size="small" startIcon={<GroupIcon />}>20</Button>
+        <Button size="small" startIcon={<CommentIcon />}>15</Button>
+        <Button size="small" startIcon={<AttachmentIcon />}>10</Button>
+>>>>>>> Stashed changes
       </CardActions>
       }
     </MuiCard>
