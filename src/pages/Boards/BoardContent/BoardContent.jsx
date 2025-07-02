@@ -37,7 +37,6 @@ function BoardContent({board}) {
     
     // setOrderedColumns(dndOrderedColumns);
   };
-function BoardContent({board}) {
   return (
     <DndContext onDragEnd={handleDragEnd} sensors = {sensors}>
     <Box
