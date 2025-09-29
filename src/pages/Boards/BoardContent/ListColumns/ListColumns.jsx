@@ -6,10 +6,6 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import { SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 function ListColumns({columns}) {
 
-  /**
-   * Thằng SortableContext yêu câu items là một mảng dạng ['id-1', 'id-2', ...] chứ không phải là mảng đối tượng [{_id: 'id-1', ...}, {_id: 'id-2', ...}]
-   * Nếu không đúng thì vẫn kéo thả được nhưng sẽ không có hiệu ứng kéo thả animation
-   */
   return (
     <SortableContext items = {columns?.map(c => c?._id)} strategy={horizontalListSortingStrategy}>
     <Box
