@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ListColumns from '~/pages/Boards/BoardContent/ListColumns/ListColumns';
 import { mapOrder } from '~/utils/sorts';
-import { 
+import {
   DndContext,
   useSensor,
   useSensors,
@@ -183,6 +183,7 @@ function BoardContent({board}) {
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
+      // cảm biến đã giải thích ở video số 30
       sensors = {sensors}>
     <Box
       sx={{
