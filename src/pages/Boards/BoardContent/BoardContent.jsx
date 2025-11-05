@@ -11,17 +11,16 @@ import {
   DragOverlay,
   defaultDropAnimationSideEffects,
   closestCorners,
-  closestCenter,
   pointerWithin,
-  rectIntersection,
   getFirstCollision,
 } from '@dnd-kit/core';
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { arrayMove, defaultAnimateLayoutChanges } from '@dnd-kit/sortable';
+import { arrayMove } from '@dnd-kit/sortable';
+import { cloneDeep, isEmpty } from 'lodash';
+import { generatePlaceholderCard } from '~/utils/formatter'
 
 import Column from './ListColumns/Column/Column';
 import Card from './ListColumns/Column/ListCards/Card/Card';
-import { cloneDeep } from 'lodash';
 // useRef is used to track the last over id during custom collision detection
 // Định nghĩa các kiểu phần tử đang được kéo
 const ACTIVE_DRAG_ITEM_TYPE = {
@@ -89,6 +88,10 @@ function BoardContent({board}) {
         // Xóa card ở cái column active (cũng có thể hiểu là column cũ, cái lúc mà kéo card ra khoeir nó để sang column khác)
         nextActiveColumn.cards = nextActiveColumn.cards.filter(card => card._id !== activeDraggingCardId)
 
+        // Thêm Placeholder Card nếu Column rỗng
+        if (isEmpty(nextActiveColumn.cards)) {
+          nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)]
+        }
         // Cập nhật lại mảng cardOrderIds cho chuẩn dữ liệu
         nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(card => card._id)
       }
@@ -107,6 +110,9 @@ function BoardContent({board}) {
         
         // Tiếp theo là thêm cái card đang kéo vào overColumn theo vị trí index mới
         nextOverColumn.cards = nextOverColumn.cards.toSpliced(newCardIndex, 0, rebuild_activeDraggingCardata)
+
+        // Xóa Placeholder Card đi nếu nó đnag tồn tại
+        nextOverColumn.cards =  nextOverColumn.cards.filter(card => !card.FE_PlaceholderCard)
 
         // Cập nhật lại mảng cardOrderIds cho chuẩn dữ liệu
         nextOverColumn.cardOrderIds = nextOverColumn.cards.map(card => card._id)
@@ -273,22 +279,18 @@ function BoardContent({board}) {
 
     // Tìm các điểm giao nhau, va chạm - intersection với con trỏ
     const pointerIntersections = pointerWithin(args)
-
-    // Thuật toán phát hiện va chạm sẽ trả về một mảng các va chạm ở đây
-    const intersections = pointerIntersections?.length > 0
-      ? pointerIntersections
-      : rectIntersection(args)
     
-    // Tìm overId đầu tiên trong intersections phía trên
-    let overId = getFirstCollision(intersections, 'id')
+    if (!pointerIntersections?.length) return
+    
+    // Tìm overId đầu tiên trong pointerIntersections phía trên
+    let overId = getFirstCollision(pointerIntersections, 'id')
     if (overId) {
       // Video 37: Đoạn này để fix cái vụ flickering.
 
       const checkColumn = orderedColumns.find(column => column._id === overId)
 
       if (checkColumn) {
-        console.log('overId before', overId)
-        overId = closestCenter({
+        overId = closestCorners({
           ...args,
           droppableContainers: args.droppableContainers.filter(container => {
             return (container.id !== overId) && (checkColumn?.cardOrderIds?.includes(container.id))
