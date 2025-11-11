@@ -26,17 +26,17 @@ function ListColumns({columns}) {
             mx:2,
             borderRadius: '6px',
             height: 'fit-content',
-            bgcolor: '#ffffff3d'
-           
+            bgcolor: '#D9E4EC'
           }}>
             <Button
               startIcon = {<NoteAddIcon/>}
               sx={{
-                color: 'white',
+                color: '#000',
                 width: '100%',
                 justifyContent: 'flex-start',
                 pl:2.5,
-                py:1
+                py:1,
+                fontWeight: '300'
               }}
             >
               Add new column</Button>

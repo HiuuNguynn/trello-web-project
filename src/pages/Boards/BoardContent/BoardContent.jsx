@@ -106,8 +106,6 @@ function BoardContent({board}) {
           columnId: nextOverColumn._id
         }
 
-        console.log('rebuild_activeDraggingCardata', rebuild_activeDraggingCardata);
-        
         // Tiếp theo là thêm cái card đang kéo vào overColumn theo vị trí index mới
         nextOverColumn.cards = nextOverColumn.cards.toSpliced(newCardIndex, 0, rebuild_activeDraggingCardata)
 
@@ -124,7 +122,6 @@ function BoardContent({board}) {
 
   // Trigger khi bắt đầu kéo một phần tử
   const handleDragStart = (event) => {
-    // console.log('Drag started:', active);
     setActiveDragItemId(event?.active?.id);
     setActiveDragItemType(
       event?.active?.data?.current?.columnId ?
@@ -145,7 +142,6 @@ function BoardContent({board}) {
     if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) return
     
     // Còn nếu kéo card thì xử lý thêm để có thể kéo card qua lại giữa các columns
-    // console.log('handleDragOver: ', event)
     const { active, over } = event
 
     // Cần đảm bảo nếu không tồn tại active hoặc over (khi kéo ra ngoài phạm vi container) thì không làm gì (tránh crash trang)
@@ -227,7 +223,6 @@ function BoardContent({board}) {
           // Cập nhật lại 2 giá trị mới là card và cardOrderIds trong cái targetColumn
           targetColumn.cards = dndOrderedCards
           targetColumn.cardOrderIds = dndOrderedCards.map(card => card._id )
-          console.log('targetColumn', targetColumn)
 
           return nextColumns
 
@@ -244,12 +239,7 @@ function BoardContent({board}) {
         // cái này được dùng để sắp xếp lại mảng Columns ban đầu
         const dndOrderedColumns = arrayMove(orderedColumns, oldIndex, newIndex);
         // Cập nhật state để phản ánh thay đổi vị trí của columns
-        setOrderedColumns(dndOrderedColumns);
-
-        // 2 cái console.log dữ liệu này sau dùng để gọi API nếu cần
-        // const dndOrderedColumnsIds = dndOrderedColumns.map(c => c._id);
-        // console.log('dndOrderedColumns:', dndOrderedColumns);
-        // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds);
+        setOrderedColumns(dndOrderedColumns)
     }
 
     // Những dữ liệu sau khi kéo thả luôn phải đưa về giá trị ban đầu
@@ -285,8 +275,6 @@ function BoardContent({board}) {
     // Tìm overId đầu tiên trong pointerIntersections phía trên
     let overId = getFirstCollision(pointerIntersections, 'id')
     if (overId) {
-      // Video 37: Đoạn này để fix cái vụ flickering.
-
       const checkColumn = orderedColumns.find(column => column._id === overId)
 
       if (checkColumn) {
@@ -296,7 +284,6 @@ function BoardContent({board}) {
             return (container.id !== overId) && (checkColumn?.cardOrderIds?.includes(container.id))
           })
         })[0]?.id
-        console.log('overId after', overId)
       }
       lastOverId.current = overId
       return [{ id: overId }]
@@ -319,7 +306,7 @@ function BoardContent({board}) {
         display: 'flex',
         width: '100%',
         height: (theme) => theme.trello.boardContentHeight,
-        bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#1976d2',
+        bgcolor: (theme) => theme.palette.mode === 'dark' ? '#34496e' : '#F4F6F8',
         padding: '10px 0',
       }}>
       <ListColumns columns = {orderedColumns} />
