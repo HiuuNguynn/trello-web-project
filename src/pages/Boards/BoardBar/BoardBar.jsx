@@ -54,26 +54,6 @@ function BoardBar({board}) {
           clickable
         />
 
-        <Chip
-          sx={MENU_STYLE}
-          icon={<AddToDriveIcon />}
-          label="Add to Goggle Drive"
-          clickable
-        />
-
-        <Chip
-          sx={MENU_STYLE}
-          icon={<BoltIcon />}
-          label="Automation"
-          clickable
-        />
-
-        <Chip
-          sx={MENU_STYLE}
-          icon={<FilterListIcon />}
-          label="Filters"
-          clickable
-        />
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

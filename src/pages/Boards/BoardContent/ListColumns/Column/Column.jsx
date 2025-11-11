@@ -49,7 +49,7 @@ function Column({ column }) {
             sx={{
                 maxWidth: '300px',
                 minWidth: '300px',
-                bgcolor: (theme) => theme.palette.mode === 'dark' ? '#333643' : '#ebecf0',
+                bgcolor: (theme) => theme.palette.mode === 'dark' ? '#333643' : '#D9E4EC',
                 ml: 2,
                 borderRadius: '6px',
                 height: 'fit-content',
