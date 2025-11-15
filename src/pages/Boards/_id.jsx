@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import Container from '@mui/material/Container'
 import AppBar from '~/components/AppBar/AppBar'
 import BoardBar from './BoardBar/BoardBar'
@@ -23,10 +24,16 @@ import Typography from '@mui/material/Typography'
 import { toast } from 'react-toastify'
 
 function Board() {
+  const { boardId } = useParams()
+  const navigate = useNavigate()
   const [board, setBoard] = useState(null)
 
   useEffect(() => {
-    const boardId = '6912ad39f4e9a0a7f1ac0016'
+    if (!boardId) {
+      navigate('/login')
+      return
+    }
+    
     // Call API
     fetchBoardDetailsAPI(boardId).then(board => {
 
@@ -42,8 +49,15 @@ function Board() {
       })
 
       setBoard(board)
+    }).catch(error => {
+      const errorMessage = error.response?.data?.message || error.message || 'Failed to load board'
+      toast.error(errorMessage)
+      // Nếu board không tồn tại hoặc không có quyền truy cập, redirect về login
+      if (error.response?.status === 401 || error.response?.status === 404) {
+        navigate('/login')
+      }
     })
-  }, [])
+  }, [boardId, navigate])
 
   const createNewColumn = async (newColumnData) => {
       await createNewColumnAPI({
