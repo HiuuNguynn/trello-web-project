@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import ModeSelect from '~/components/ModeSelect/ModeSelect';
@@ -10,9 +11,27 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logoutAPI } from '~/apis';
+import { toast } from 'react-toastify';
 
 function index() {
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logoutAPI();
+      localStorage.removeItem('user');
+      toast.success('Logout successfully!');
+      navigate('/login');
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Logout failed!';
+      toast.error(errorMessage);
+    }
+  };
+
   return (
     <Box sx={{
       px: 2,
@@ -28,7 +47,10 @@ function index() {
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <AppsIcon sx={{
           color: 'white',
-        }} />
+          cursor: 'pointer',
+        }}
+        onClick={() => navigate('/boards')}
+        />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <SvgIcon component={trelloLogo} fontSize="small" inheritViewBox sx={{ color: 'white' }} />
           <Typography variant='span' sx={{ fontWeight: "bold", color: 'white', fontSize: "1.2rem" }}>Trello</Typography>
@@ -71,6 +93,21 @@ function index() {
           }}
         />
         <ModeSelect />
+        <Button
+          variant="outlined"
+          startIcon={<LogoutIcon />}
+          onClick={handleLogout}
+          sx={{
+            color: 'white',
+            borderColor: 'white',
+            '&:hover': {
+              borderColor: 'white',
+              bgcolor: 'rgba(255, 255, 255, 0.1)'
+            }
+          }}
+        >
+          Logout
+        </Button>
       </Box>
     </Box >
   )

@@ -1,10 +1,44 @@
 import axios from 'axios'
 import { API_ROOT } from '~/utils/constants'
 
+// Cấu hình axios với credentials để gửi cookies
+axios.defaults.withCredentials = true
+
+/** Authentication */
+export const registerAPI = async (data) => {
+  const response = await axios.post(`${API_ROOT}/v1/auth/register`, data)
+  return response.data
+}
+
+export const loginAPI = async (data) => {
+  const response = await axios.post(`${API_ROOT}/v1/auth/login`, data)
+  return response.data
+}
+
+export const logoutAPI = async () => {
+  const response = await axios.delete(`${API_ROOT}/v1/auth/logout`)
+  return response.data
+}
+
+export const refreshTokenAPI = async () => {
+  const response = await axios.get(`${API_ROOT}/v1/auth/refresh-token`)
+  return response.data
+}
+
 /** Boards */
 export const fetchBoardDetailsAPI = async (boardId) => {
   const response = await axios.get(`${API_ROOT}/v1/boards/${boardId}`)
   return response.data.data
+}
+
+export const getAllBoardsAPI = async () => {
+  const response = await axios.get(`${API_ROOT}/v1/boards`)
+  return response.data.data
+}
+
+export const createNewBoardAPI = async (newBoardData) => {
+  const response = await axios.post(`${API_ROOT}/v1/boards`, newBoardData)
+  return response.data
 }
 
 export const updateBoardDetailsAPI = async (boardId, updateData) => {
