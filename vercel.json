@@ -1,17 +1,16 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
-      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|map))",
-      "destination": "/$1"
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
     },
     {
-      "source": "/((?!assets/).*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
-
