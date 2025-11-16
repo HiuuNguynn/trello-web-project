@@ -1,8 +1,53 @@
 import axios from 'axios'
 import { API_ROOT } from '~/utils/constants'
 
-// Cấu hình axios với credentials để gửi cookies
-axios.defaults.withCredentials = true
+axios.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem('accessToken')
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config
+
+    if (error.response?.status === 410 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      try {
+        const refreshToken = localStorage.getItem('refreshToken')
+        if (refreshToken) {
+          const response = await axios.post(`${API_ROOT}/v1/auth/refresh-token`, {
+            refreshToken
+          })
+          
+          const newAccessToken = response.data.data?.accessToken
+          if (newAccessToken) {
+            localStorage.setItem('accessToken', newAccessToken)
+            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
+            return axios(originalRequest)
+          }
+        }
+      } catch (refreshError) {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('user')
+        window.location.href = '/login'
+        return Promise.reject(refreshError)
+      }
+    }
+
+    return Promise.reject(error)
+  }
+)
 
 /** Authentication */
 export const registerAPI = async (data) => {
