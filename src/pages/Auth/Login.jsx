@@ -69,11 +69,18 @@ function Login() {
       const response = await loginAPI(formData)
       toast.success(response.message || 'Login successfully!')
       
-      // Lưu user info vào localStorage
       if (response.data?.user) {
         localStorage.setItem('user', JSON.stringify(response.data.user))
       }
-        navigate('/boards')
+      
+      if (response.data?.accessToken) {
+        localStorage.setItem('accessToken', response.data.accessToken)
+      }
+      if (response.data?.refreshToken) {
+        localStorage.setItem('refreshToken', response.data.refreshToken)
+      }
+      
+      navigate('/boards')
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message || 'Login failed!'
       toast.error(errorMessage)

@@ -24,11 +24,16 @@ function index() {
     try {
       await logoutAPI();
       localStorage.removeItem('user');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       toast.success('Logout successfully!');
       navigate('/login');
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message || 'Logout failed!';
       toast.error(errorMessage);
+      localStorage.removeItem('user');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
     }
   };
 
